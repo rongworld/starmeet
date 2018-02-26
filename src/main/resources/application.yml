@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/star?useSSL=false&0characterEncoding=utf8
+    username: root
+    password: wr000000
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+
+
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
