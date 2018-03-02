@@ -4,12 +4,10 @@ spring:
     username: root
     password: wr000000
     driver-class-name: com.mysql.jdbc.Driver
-
-
-
-
-
+    tomcat:
+      max-active: 20
+      max-idle: 5
+      max-wait: 300
   jpa:
     hibernate:
       ddl-auto: update
-
