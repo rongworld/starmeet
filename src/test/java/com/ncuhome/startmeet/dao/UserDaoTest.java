@@ -15,7 +15,7 @@ public class UserDaoTest {
     private UserDao userDao;
 
 
-    //@Test
+    @Test
     public void insert() {
         for (int i = 0; i <= 15; i++) {
 
@@ -27,7 +27,10 @@ public class UserDaoTest {
             user.setStarname("star" + i);
             user.setUsername("5555555" + i);
 
+            user.setAvatar("http://io.myhoster.top/hua.jpg");
 
+            user.setLabel("a|a|a");
+            user.setGender("男");
             userDao.save(user);
 
         }

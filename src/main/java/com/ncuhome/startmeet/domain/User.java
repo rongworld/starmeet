@@ -12,7 +12,6 @@ import java.util.Date;
 @Entity
 @ToString
 public class User {
-
     @Id
     @GeneratedValue
     private Integer id;

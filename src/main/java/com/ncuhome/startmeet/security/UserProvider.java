@@ -19,10 +19,8 @@ public class UserProvider implements Provider<User> {
 
     @Override
     public User get() {
-        String token = httpServletRequest.getHeader("authorization");
-        String userId = (String) CheckToken.getInfo(token, "userID");
-        User user = userDao.findUserById(Integer.valueOf(userId));
-
-        return user;
+        String token = httpServletRequest.getHeader("Authorization");
+        String userId = (String) Token.getInfo(token, "userID");
+        return userDao.findUserById(Integer.valueOf(userId));
     }
 }

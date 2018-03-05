@@ -8,6 +8,7 @@ import com.ncuhome.startmeet.enums.StarStatus;
 import com.ncuhome.startmeet.exception.Exp;
 import com.ncuhome.startmeet.service.GetStarInfoService;
 import com.ncuhome.startmeet.view.StarInfo;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.context.annotation.SessionScope;
 
 @SessionScope
@@ -18,7 +19,6 @@ public class GetStarInfoServiceImpl implements GetStarInfoService {
 
     @Inject
     private User user;
-
 
     @Override
     public StarInfo getStarInfo() throws Exp {

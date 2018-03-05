@@ -1,24 +1,18 @@
 package com.ncuhome.startmeet.config;
 
 import com.google.inject.Guice;
+import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.ncuhome.startmeet.dao.UserDao;
 import com.ncuhome.startmeet.domain.User;
 import com.ncuhome.startmeet.module.GuiceModule;
 import com.ncuhome.startmeet.security.UserProvider;
-import com.ncuhome.startmeet.service.GetStarInfoService;
-import com.ncuhome.startmeet.service.GetStarsService;
-import com.ncuhome.startmeet.service.PublishService;
-import com.ncuhome.startmeet.service.TouchStarService;
-import com.ncuhome.startmeet.service.impl.GetStarInfoServiceImpl;
-import com.ncuhome.startmeet.service.impl.GetStarsServiceImpl;
-import com.ncuhome.startmeet.service.impl.PublishServiceImpl;
-import com.ncuhome.startmeet.service.impl.TouchStarServiceServiceImpl;
+import com.ncuhome.startmeet.service.*;
+import com.ncuhome.startmeet.service.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.annotation.SessionScope;
-
 import javax.servlet.http.HttpServletRequest;
 
 @Configuration
@@ -69,6 +63,13 @@ public class BeanConfig {
     @SessionScope
     public PublishService publishService(Injector injector){
         return injector.getInstance(PublishServiceImpl.class);
+    }
+
+
+    @Bean
+    @SessionScope
+    public RankChartService rankChartService(Injector injector) {
+        return injector.getInstance(RankChartServiceImpl.class);
     }
 
 }

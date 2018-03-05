@@ -18,4 +18,7 @@ public interface UserDao extends JpaRepository<User, Integer> {
     List<User> findStarts();
 
     User findUserById(Integer id);
+
+    List<User> findTop10ByStarStatusEqualsOrderByLastChangeTimeAsc(String status);
+
 }
