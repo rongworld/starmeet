@@ -17,6 +17,9 @@ public class CoreConfig implements Filter{
 
         HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
         httpServletResponse.setHeader("Access-Control-Allow-Origin","*");
+        httpServletResponse.setHeader("Access-Control-Allow-Method","GET,POST,OPTIONS");
+        httpServletResponse.setHeader("Access-Control-Allow-Headers","Authorization,DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type");
+        httpServletResponse.setHeader("Access-Control-Allow-Credentials","true");
         filterChain.doFilter(servletRequest,servletResponse);
     }
 
