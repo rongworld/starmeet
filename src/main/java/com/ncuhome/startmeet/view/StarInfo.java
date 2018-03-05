@@ -17,7 +17,7 @@ public class StarInfo {
 
     private String starword;
 
-    private final String text = "{\"startId\":%d,\"label\":\"%s\",\"gender\":\"%s\",\"avatar\":\"%s\",\"startname\":\"%s\"}";
+    private final String text = "{\"chatID\":%d,\"label\":\"%s\",\"gender\":\"%s\",\"avatar\":\"%s\",\"starname\":\"%s\"}";
 
     @Override
     public String toString(){
