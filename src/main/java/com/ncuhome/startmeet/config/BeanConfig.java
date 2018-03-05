@@ -1,8 +1,8 @@
 package com.ncuhome.startmeet.config;
 
 import com.google.inject.Guice;
-import com.google.inject.Inject;
 import com.google.inject.Injector;
+import com.ncuhome.startmeet.dao.MessageDao;
 import com.ncuhome.startmeet.dao.UserDao;
 import com.ncuhome.startmeet.domain.User;
 import com.ncuhome.startmeet.module.GuiceModule;
@@ -20,11 +20,13 @@ public class BeanConfig {
 
     private final HttpServletRequest httpServletRequest;//把request传给guice
     private final UserDao userDao;
+    private final MessageDao messageDao;
 
     @Autowired
-    public BeanConfig(HttpServletRequest httpServletRequest, UserDao userDao) {
+    public BeanConfig(HttpServletRequest httpServletRequest, UserDao userDao, MessageDao messageDao) {
         this.httpServletRequest = httpServletRequest;
         this.userDao = userDao;
+        this.messageDao = messageDao;
     }
 
 
@@ -34,7 +36,8 @@ public class BeanConfig {
                 binder -> binder.bind(HttpServletRequest.class)
                         .toInstance(httpServletRequest)
                 , binder -> binder.bind(UserDao.class).toInstance(userDao)
-                , new GuiceModule(),
+                , new GuiceModule()
+                , binder -> binder.bind(MessageDao.class).toInstance(messageDao),
                 binder -> binder.bind(User.class).toProvider(new UserProvider())
         );
     }
@@ -70,6 +73,12 @@ public class BeanConfig {
     @SessionScope
     public RankChartService rankChartService(Injector injector) {
         return injector.getInstance(RankChartServiceImpl.class);
+    }
+
+    @Bean
+    @SessionScope
+    public GetMessageService getMessageService(Injector injector){
+        return injector.getInstance(GetMessageServiceImpl.class);
     }
 
 }

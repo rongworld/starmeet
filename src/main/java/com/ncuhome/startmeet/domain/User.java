@@ -16,8 +16,6 @@ public class User {
     @GeneratedValue
     private Integer id;
 
-    private String userId;
-
     private String avatar;
 
     private String username;
