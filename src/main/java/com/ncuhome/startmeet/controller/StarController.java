@@ -110,7 +110,7 @@ public class StarController {
 
 
     @GetMapping(value = "/api/chatInfo")
-    public String getcChatInfo() {
+    public String getcChatInfo() throws Exp {
         ChatInfoVO chatInfoVO = getChatInfoService.getInfo();
         return new ResultVO<>(0, "successful", chatInfoVO).toString();
     }

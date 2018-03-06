@@ -4,6 +4,8 @@ import com.google.inject.Inject;
 import com.google.inject.servlet.RequestScoped;
 import com.ncuhome.startmeet.dao.UserDao;
 import com.ncuhome.startmeet.domain.User;
+import com.ncuhome.startmeet.enums.Error;
+import com.ncuhome.startmeet.exception.Exp;
 import com.ncuhome.startmeet.service.GetChatInfoService;
 import com.ncuhome.startmeet.view.ChatInfoVO;
 
@@ -16,9 +18,14 @@ public class GetChatInfoServiceImpl implements GetChatInfoService{
     private UserDao userDao;
 
     @Override
-    public ChatInfoVO getInfo() {
+    public ChatInfoVO getInfo() throws Exp {
         ChatInfoVO chatInfoVO = new ChatInfoVO();
         User chatUser = userDao.findUserById(user.getChatId());
+
+        if (chatUser == null){
+            throw new Exp(Error.No_Picked.name());
+        }
+
         chatInfoVO.setAvatar1(user.getAvatar());
         chatInfoVO.setAvatar2(chatUser.getAvatar());
         chatInfoVO.setStarname1(user.getStarname());
