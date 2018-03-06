@@ -92,7 +92,7 @@ public class TouchStarServiceServiceImpl implements TouchStarService {
         user.setStarStatus(StarStatus.ABANDON.name());
         User chatUser = userDao.findUserById(user.getChatId());
         chatUser.setStarStatus(StarStatus.ABANDON.name());
-        saveMessageService.save(new Message(user.getId(),chatUser.getId(),new Date(), Type.ABONDON.name(),chatUser.getStarname(),chatUser.getAvatar()));
+        saveMessageService.save(new Message(chatUser.getId(),chatUser.getId(),new Date(), Type.ABONDON.name(),chatUser.getStarname(),chatUser.getAvatar()));
         userDao.saveAndFlush(user);
         userDao.saveAndFlush(chatUser);
     }
