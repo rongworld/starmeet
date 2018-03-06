@@ -2,6 +2,7 @@ package com.ncuhome.startmeet.config;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.google.inject.servlet.ServletModule;
 import com.ncuhome.startmeet.dao.MessageDao;
 import com.ncuhome.startmeet.dao.UserDao;
 import com.ncuhome.startmeet.domain.User;
@@ -12,19 +13,19 @@ import com.ncuhome.startmeet.service.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.context.annotation.SessionScope;
+
 import javax.servlet.http.HttpServletRequest;
 
 @Configuration
 public class BeanConfig {
 
-    private final HttpServletRequest httpServletRequest;//把request传给guice
     private final UserDao userDao;
     private final MessageDao messageDao;
 
     @Autowired
-    public BeanConfig(HttpServletRequest httpServletRequest, UserDao userDao, MessageDao messageDao) {
-        this.httpServletRequest = httpServletRequest;
+    public BeanConfig(UserDao userDao, MessageDao messageDao) {
         this.userDao = userDao;
         this.messageDao = messageDao;
     }
@@ -33,9 +34,8 @@ public class BeanConfig {
     @Bean
     public Injector getInjector() {
         return Guice.createInjector(
-                binder -> binder.bind(HttpServletRequest.class)
-                        .toInstance(httpServletRequest)
-                , binder -> binder.bind(UserDao.class).toInstance(userDao)
+                new ServletModule(),
+                binder -> binder.bind(UserDao.class).toInstance(userDao)
                 , new GuiceModule()
                 , binder -> binder.bind(MessageDao.class).toInstance(messageDao),
                 binder -> binder.bind(User.class).toProvider(new UserProvider())
@@ -44,45 +44,46 @@ public class BeanConfig {
 
 
     @Bean
-    @SessionScope
+    @RequestScope
     public GetStarsService getStarsService(Injector injector) {
         return injector.getInstance(GetStarsServiceImpl.class);
     }
 
     @Bean
-    @SessionScope
+    @RequestScope
     public TouchStarService getTouchStar(Injector injector) {
         return injector.getInstance(TouchStarServiceServiceImpl.class);
     }
 
 
     @Bean
-    @SessionScope
-    public GetStarInfoService getStarInfoService(Injector injector){
+    @RequestScope
+    public GetStarInfoService getStarInfoService(Injector injector) {
         return injector.getInstance(GetStarInfoServiceImpl.class);
     }
 
     @Bean
-    @SessionScope
-    public PublishService publishService(Injector injector){
+    @RequestScope
+    public PublishService publishService(Injector injector) {
         return injector.getInstance(PublishServiceImpl.class);
     }
 
 
     @Bean
-    @SessionScope
+    @RequestScope
     public RankChartService rankChartService(Injector injector) {
         return injector.getInstance(RankChartServiceImpl.class);
     }
 
     @Bean
-    @SessionScope
-    public GetMessageService getMessageService(Injector injector){
+    @RequestScope
+    public GetMessageService getMessageService(Injector injector) {
         return injector.getInstance(GetMessageServiceImpl.class);
     }
+
     @Bean
-    @SessionScope
-    public GetChatInfoService getChatInfoService(Injector injector){
+    @RequestScope
+    public GetChatInfoService getChatInfoService(Injector injector) {
         return injector.getInstance(GetChatInfoServiceImpl.class);
     }
 }

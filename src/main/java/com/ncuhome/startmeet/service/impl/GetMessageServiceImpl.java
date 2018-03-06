@@ -1,6 +1,7 @@
 package com.ncuhome.startmeet.service.impl;
 
 import com.google.inject.Inject;
+import com.google.inject.servlet.RequestScoped;
 import com.ncuhome.startmeet.dao.MessageDao;
 import com.ncuhome.startmeet.domain.Message;
 import com.ncuhome.startmeet.domain.User;
@@ -10,6 +11,7 @@ import com.ncuhome.startmeet.view.MessageVO;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@RequestScoped
 public class GetMessageServiceImpl implements GetMessageService{
 
     @Inject

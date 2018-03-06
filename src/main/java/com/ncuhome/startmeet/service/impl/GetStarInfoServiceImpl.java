@@ -1,6 +1,7 @@
 package com.ncuhome.startmeet.service.impl;
 
 import com.google.inject.Inject;
+import com.google.inject.servlet.RequestScoped;
 import com.ncuhome.startmeet.dao.UserDao;
 import com.ncuhome.startmeet.domain.User;
 import com.ncuhome.startmeet.enums.Error;
@@ -10,7 +11,7 @@ import com.ncuhome.startmeet.service.GetStarInfoService;
 import com.ncuhome.startmeet.view.StarInfoVO;
 import org.springframework.web.context.annotation.SessionScope;
 
-@SessionScope
+@RequestScoped
 public class GetStarInfoServiceImpl implements GetStarInfoService {
 
     @Inject

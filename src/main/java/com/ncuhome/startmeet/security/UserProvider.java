@@ -12,14 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 public class UserProvider implements Provider<User> {
 
     @Inject
-    private HttpServletRequest httpServletRequest;
+    private Provider<HttpServletRequest> httpServletRequestProvider;
 
     @Inject
     private UserDao userDao;
 
     @Override
     public User get() {
-        String token = httpServletRequest.getHeader("Authorization");
+        String token = httpServletRequestProvider.get().getHeader("Authorization");
         String userId = (String) Token.getInfo(token, "userID");
         return userDao.findUserById(Integer.valueOf(userId));
     }

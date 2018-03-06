@@ -1,6 +1,7 @@
 package com.ncuhome.startmeet.service.impl;
 
 import com.google.inject.Inject;
+import com.google.inject.servlet.RequestScoped;
 import com.ncuhome.startmeet.dao.UserDao;
 import com.ncuhome.startmeet.domain.User;
 import com.ncuhome.startmeet.enums.StarStatus;
@@ -10,6 +11,7 @@ import com.ncuhome.startmeet.view.RankChartVO;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@RequestScoped
 public class RankChartServiceImpl implements RankChartService{
 
     @Inject

@@ -1,6 +1,7 @@
 package com.ncuhome.startmeet.service.impl;
 
 import com.google.inject.Inject;
+import com.google.inject.servlet.RequestScoped;
 import com.ncuhome.startmeet.dao.UserDao;
 import com.ncuhome.startmeet.domain.Message;
 import com.ncuhome.startmeet.domain.User;
@@ -19,7 +20,7 @@ import java.util.Date;
 
 
 @Slf4j
-@SessionScope
+@RequestScoped
 public class TouchStarServiceServiceImpl implements TouchStarService {
 
     @Inject

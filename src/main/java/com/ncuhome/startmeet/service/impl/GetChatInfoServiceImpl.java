@@ -1,12 +1,13 @@
 package com.ncuhome.startmeet.service.impl;
 
 import com.google.inject.Inject;
+import com.google.inject.servlet.RequestScoped;
 import com.ncuhome.startmeet.dao.UserDao;
 import com.ncuhome.startmeet.domain.User;
 import com.ncuhome.startmeet.service.GetChatInfoService;
 import com.ncuhome.startmeet.view.ChatInfoVO;
 
-
+@RequestScoped
 public class GetChatInfoServiceImpl implements GetChatInfoService{
     @Inject
     private User user;
