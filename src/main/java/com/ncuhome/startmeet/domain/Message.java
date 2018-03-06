@@ -19,17 +19,19 @@ public class Message {
     private String type;
     private String starname;
     private String avtar;
+    private Integer status;
 
     public Message() {
 
     }
 
-    public Message(Integer userId, Integer chatId, Date date, String type, String starname, String avtar) {
+    public Message(Integer userId, Integer chatId, Date date, String type, String starname, String avtar,Integer status) {
         this.userId = userId;
         this.chatId = chatId;
         this.date = date;
         this.type = type;
         this.starname = starname;
         this.avtar = avtar;
+        this.status = status;
     }
 }

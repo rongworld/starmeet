@@ -11,10 +11,8 @@ import com.ncuhome.startmeet.enums.Type;
 import com.ncuhome.startmeet.exception.Exp;
 import com.ncuhome.startmeet.service.SaveMessageService;
 import com.ncuhome.startmeet.service.TouchStarService;
-import com.ncuhome.startmeet.util.CheckTime;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.context.annotation.SessionScope;
 
 import java.util.Date;
 
@@ -72,8 +70,8 @@ public class TouchStarServiceServiceImpl implements TouchStarService {
 
         Date date = new Date();
 
-        saveMessageService.save(new Message(user.getId(),chatUser.getId(),date, Type.PICKING.name(),chatUser.getStarname(),chatUser.getAvatar()));
-        saveMessageService.save(new Message(chatUser.getId(),user.getId(),date, Type.PICKED.name(),user.getStarname(),user.getAvatar()));
+        saveMessageService.save(new Message(user.getId(),chatUser.getId(),date, Type.PICKING.name(),chatUser.getStarname(),chatUser.getAvatar(),0));
+        saveMessageService.save(new Message(chatUser.getId(),user.getId(),date, Type.PICKED.name(),user.getStarname(),user.getAvatar(),0));
 
         userDao.saveAndFlush(user);
         userDao.saveAndFlush(chatUser);
@@ -92,7 +90,7 @@ public class TouchStarServiceServiceImpl implements TouchStarService {
         user.setStarStatus(StarStatus.ABANDON.name());
         User chatUser = userDao.findUserById(user.getChatId());
         chatUser.setStarStatus(StarStatus.ABANDON.name());
-        saveMessageService.save(new Message(chatUser.getId(),chatUser.getId(),new Date(), Type.ABONDON.name(),chatUser.getStarname(),chatUser.getAvatar()));
+        saveMessageService.save(new Message(chatUser.getId(),chatUser.getId(),new Date(), Type.ABANDON.name(),chatUser.getStarname(),chatUser.getAvatar(),0));
         userDao.saveAndFlush(user);
         userDao.saveAndFlush(chatUser);
     }

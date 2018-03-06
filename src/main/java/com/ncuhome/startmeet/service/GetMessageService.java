@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface GetMessageService{
     List<MessageVO> getMessages();
+    Integer getNotReadMessageNumber();
 }

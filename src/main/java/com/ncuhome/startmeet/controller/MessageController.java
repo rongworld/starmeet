@@ -21,4 +21,10 @@ public class MessageController {
         List<MessageVO> list = getMessageService.getMessages();
         return new ResultVO<>(0,"successful",list).toString();
     }
+
+    @GetMapping(value = "/api/messageNumber")
+    public String getNumber(){
+        Integer num = getMessageService.getNotReadMessageNumber();
+        return new ResultVO<>(0,"successful",num).toString();
+    }
 }

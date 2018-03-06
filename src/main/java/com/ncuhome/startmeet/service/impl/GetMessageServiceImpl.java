@@ -31,7 +31,7 @@ public class GetMessageServiceImpl implements GetMessageService{
         }
 
         return messages.stream().map(e->{
-
+            e.setStatus(1);
             MessageVO messageVO = new MessageVO();
             messageVO.setChatAvatar(e.getAvtar());
             messageVO.setDate(e.getDate());
@@ -39,5 +39,12 @@ public class GetMessageServiceImpl implements GetMessageService{
             messageVO.setChatStarname(e.getStarname());
             return messageVO;
         }).collect(Collectors.toList());
+    }
+
+    @Override
+    public Integer getNotReadMessageNumber() {
+        List<Message> messages = messageDao.findByUserId(user.getId());
+        List list = messages.stream().filter(e->e.getStatus() == 0).collect(Collectors.toList());
+        return list.size();
     }
 }

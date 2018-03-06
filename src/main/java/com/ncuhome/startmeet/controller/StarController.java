@@ -56,6 +56,8 @@ public class StarController {
     public String getStarts() {
         List<StarInfoVO> list = getStarsService.getStarts();
         String userId = (String) Token.getInfo(httpServletRequest.getHeader("Authorization"), "userID");
+
+
         User user = userDao.findUserById(Integer.valueOf(userId));
         switch (StarStatus.valueOf(user.getStarStatus())) {
             case ABANDON:
