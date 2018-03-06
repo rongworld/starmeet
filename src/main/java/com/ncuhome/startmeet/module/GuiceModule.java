@@ -18,6 +18,7 @@ public class GuiceModule extends AbstractModule{
         bind(RankChartService.class).to(RankChartServiceImpl.class);
         bind(SaveMessageService.class).to(SaveMessageServiceImpl.class);
         bind(GetMessageService.class).to(GetMessageServiceImpl.class);
+        bind(GetChatInfoService.class).to(GetChatInfoServiceImpl.class);
     }
 
 }

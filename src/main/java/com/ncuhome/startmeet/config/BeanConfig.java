@@ -80,5 +80,9 @@ public class BeanConfig {
     public GetMessageService getMessageService(Injector injector){
         return injector.getInstance(GetMessageServiceImpl.class);
     }
-
+    @Bean
+    @SessionScope
+    public GetChatInfoService getChatInfoService(Injector injector){
+        return injector.getInstance(GetChatInfoServiceImpl.class);
+    }
 }

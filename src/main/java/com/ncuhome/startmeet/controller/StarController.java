@@ -10,6 +10,7 @@ import com.ncuhome.startmeet.enums.StarStatus;
 import com.ncuhome.startmeet.exception.Exp;
 import com.ncuhome.startmeet.security.Token;
 import com.ncuhome.startmeet.service.*;
+import com.ncuhome.startmeet.view.ChatInfoVO;
 import com.ncuhome.startmeet.view.RankChartVO;
 import com.ncuhome.startmeet.view.ResultVO;
 import com.ncuhome.startmeet.view.StarInfoVO;
@@ -49,6 +50,9 @@ public class StarController {
 
     @Autowired
     private RankChartService rankChartService;
+
+    @Autowired
+    private GetChatInfoService getChatInfoService;
 
     @GetMapping(value = "/api/stars")
     public String getStarts() {
@@ -106,4 +110,10 @@ public class StarController {
         return new ResultVO<>(0,"successful",list).toString();
     }
 
+
+    @GetMapping(value = "/api/chatInfo")
+    public String getcChatInfo(){
+        ChatInfoVO chatInfoVO = getChatInfoService.getInfo();
+        return new ResultVO<>(0,"successful",chatInfoVO).toString();
+    }
 }
