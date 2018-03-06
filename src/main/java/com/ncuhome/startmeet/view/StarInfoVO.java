@@ -3,7 +3,7 @@ package com.ncuhome.startmeet.view;
 import lombok.Data;
 
 @Data
-public class StarInfo {
+public class StarInfoVO {
 
     private Integer startId;
 

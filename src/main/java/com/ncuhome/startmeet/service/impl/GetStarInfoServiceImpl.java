@@ -7,8 +7,7 @@ import com.ncuhome.startmeet.enums.Error;
 import com.ncuhome.startmeet.enums.StarStatus;
 import com.ncuhome.startmeet.exception.Exp;
 import com.ncuhome.startmeet.service.GetStarInfoService;
-import com.ncuhome.startmeet.view.StarInfo;
-import org.springframework.cache.annotation.Cacheable;
+import com.ncuhome.startmeet.view.StarInfoVO;
 import org.springframework.web.context.annotation.SessionScope;
 
 @SessionScope
@@ -21,7 +20,7 @@ public class GetStarInfoServiceImpl implements GetStarInfoService {
     private User user;
 
     @Override
-    public StarInfo getStarInfo() throws Exp {
+    public StarInfoVO getStarInfo() throws Exp {
         if (user.getStarStatus().equals(StarStatus.ABANDON.name())){
             throw new Exp(Error.No_Picked.name());
         }
@@ -29,12 +28,12 @@ public class GetStarInfoServiceImpl implements GetStarInfoService {
         if (chatUser == null) {
             return null;
         }
-        StarInfo starInfo = new StarInfo();
-        starInfo.setStarname(chatUser.getStarname());
-        starInfo.setStartId(chatUser.getId());
-        starInfo.setLabel(chatUser.getLabel());
-        starInfo.setGender(chatUser.getGender());
-        starInfo.setStarword(chatUser.getStarword());
-        return starInfo;
+        StarInfoVO starInfoVO = new StarInfoVO();
+        starInfoVO.setStarname(chatUser.getStarname());
+        starInfoVO.setStartId(chatUser.getId());
+        starInfoVO.setLabel(chatUser.getLabel());
+        starInfoVO.setGender(chatUser.getGender());
+        starInfoVO.setStarword(chatUser.getStarword());
+        return starInfoVO;
     }
 }

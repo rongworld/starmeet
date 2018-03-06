@@ -5,7 +5,7 @@ import com.ncuhome.startmeet.dao.UserDao;
 import com.ncuhome.startmeet.domain.User;
 import com.ncuhome.startmeet.enums.StarStatus;
 import com.ncuhome.startmeet.service.RankChartService;
-import com.ncuhome.startmeet.view.RankChart;
+import com.ncuhome.startmeet.view.RankChartVO;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,7 +16,7 @@ public class RankChartServiceImpl implements RankChartService{
     private UserDao userDao;
 
     @Override
-    public List<RankChart> getRankChart() {
+    public List<RankChartVO> getRankChart() {
         List<User> list = userDao.findTop10ByStarStatusEqualsOrderByLastChangeTimeAsc(StarStatus.PICKING.name());
 
         if (list == null||list.isEmpty()){
@@ -25,14 +25,14 @@ public class RankChartServiceImpl implements RankChartService{
 
 
         return list.stream().map(e->{
-            RankChart rankChart = new RankChart();
+            RankChartVO rankChartVO = new RankChartVO();
             User chatUser = userDao.findUserById(e.getChatId());
-            rankChart.setAvatar1(e.getAvatar());
-            rankChart.setAvatar2(chatUser.getAvatar());
-            rankChart.setStarname1(e.getStarname());
-            rankChart.setStarname2(chatUser.getStarname());
-            rankChart.setDays((int) ((System.currentTimeMillis()-e.getLastChangeTime().getTime())/(1000*60*60*24)));
-            return rankChart;
+            rankChartVO.setAvatar1(e.getAvatar());
+            rankChartVO.setAvatar2(chatUser.getAvatar());
+            rankChartVO.setStarname1(e.getStarname());
+            rankChartVO.setStarname2(chatUser.getStarname());
+            rankChartVO.setDays((int) ((System.currentTimeMillis()-e.getLastChangeTime().getTime())/(1000*60*60*24)));
+            return rankChartVO;
         }).collect(Collectors.toList());
     }
 }

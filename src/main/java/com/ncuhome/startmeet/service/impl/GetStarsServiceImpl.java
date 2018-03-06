@@ -4,7 +4,7 @@ import com.google.inject.Inject;
 import com.ncuhome.startmeet.dao.UserDao;
 import com.ncuhome.startmeet.domain.User;
 import com.ncuhome.startmeet.service.GetStarsService;
-import com.ncuhome.startmeet.view.StarInfo;
+import com.ncuhome.startmeet.view.StarInfoVO;
 import org.springframework.web.context.annotation.SessionScope;
 
 import java.util.List;
@@ -17,17 +17,17 @@ public class GetStarsServiceImpl implements GetStarsService {
     private UserDao userDao;
 
     @Override
-    public List<StarInfo> getStarts() {
+    public List<StarInfoVO> getStarts() {
         List<User> users = userDao.findStarts();
         return users.stream().map(
                  e->{
-                     StarInfo starInfo = new StarInfo();
-                     starInfo.setAvatar(e.getAvatar());
-                     starInfo.setGender(e.getGender());
-                     starInfo.setLabel(e.getLabel());
-                     starInfo.setStarname(e.getStarname());
-                     starInfo.setStartId(e.getId());
-                     return starInfo;
+                     StarInfoVO starInfoVO = new StarInfoVO();
+                     starInfoVO.setAvatar(e.getAvatar());
+                     starInfoVO.setGender(e.getGender());
+                     starInfoVO.setLabel(e.getLabel());
+                     starInfoVO.setStarname(e.getStarname());
+                     starInfoVO.setStartId(e.getId());
+                     return starInfoVO;
                  }
          ).collect(Collectors.toList());
     }

@@ -3,7 +3,7 @@ package com.ncuhome.startmeet.view;
 import lombok.Data;
 
 @Data
-public class RankChart {
+public class RankChartVO {
     private String starname1;
     private String starname2;
     private String avatar1;

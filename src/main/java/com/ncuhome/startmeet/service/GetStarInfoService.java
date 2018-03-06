@@ -1,8 +1,8 @@
 package com.ncuhome.startmeet.service;
 
 import com.ncuhome.startmeet.exception.Exp;
-import com.ncuhome.startmeet.view.StarInfo;
+import com.ncuhome.startmeet.view.StarInfoVO;
 
 public interface GetStarInfoService {
-    StarInfo getStarInfo() throws Exp;
+    StarInfoVO getStarInfo() throws Exp;
 }
