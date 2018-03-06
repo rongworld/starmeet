@@ -32,10 +32,12 @@ public class User {
 
     private Float likability;
 
+    @Column(name = "chatID")
     private Integer chatId;
 
     private String starStatus = StarStatus.ABANDON.name();
 
     private Date lastChangeTime;
 
+    private String userid;
 }
