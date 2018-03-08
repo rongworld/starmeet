@@ -5,6 +5,9 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/*
+*
+* 解决跨域问题*/
 @WebFilter
 public class CoreConfig implements Filter{
     @Override

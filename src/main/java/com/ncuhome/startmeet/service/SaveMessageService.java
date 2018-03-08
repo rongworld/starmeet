@@ -5,7 +5,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
 
 
-
+/*
+* 存储消息
+* */
 public interface SaveMessageService {
     void save(Message message);
 }

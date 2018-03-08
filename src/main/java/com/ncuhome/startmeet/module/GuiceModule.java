@@ -5,7 +5,9 @@ import com.ncuhome.startmeet.service.*;
 import com.ncuhome.startmeet.service.impl.*;
 import lombok.extern.slf4j.Slf4j;
 
-
+/*
+* Guice绑定
+* */
 @Slf4j
 public class GuiceModule extends AbstractModule{
 

@@ -4,7 +4,9 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import lombok.extern.slf4j.Slf4j;
 
-
+/*
+* 解析token
+* */
 @Slf4j
 public class Token {
     private static String apiKey = "star00star";

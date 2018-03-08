@@ -14,9 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.annotation.RequestScope;
-import org.springframework.web.context.annotation.SessionScope;
 
-import javax.servlet.http.HttpServletRequest;
+
+/*
+* 配置Controller层的Bean，对Service注入实现类，实现类由Guice管理
+* */
 
 @Configuration
 public class BeanConfig {

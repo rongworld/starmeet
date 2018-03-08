@@ -8,6 +8,10 @@ import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.http.HttpServletRequest;
 
+
+/*
+* 注入User
+* */
 @Slf4j
 public class UserProvider implements Provider<User> {
 

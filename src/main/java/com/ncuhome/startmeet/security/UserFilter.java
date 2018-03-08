@@ -7,6 +7,11 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
+
+/*
+ *验证用户是否登录
+ * */
+
 @WebFilter
 @Slf4j
 public class UserFilter implements Filter{
