@@ -33,7 +33,7 @@ public class GetMessageServiceImpl implements GetMessageService{
         return messages.stream().map(e->{
             e.setStatus(1);
             MessageVO messageVO = new MessageVO();
-            messageVO.setChatAvatar(e.getAvtar());
+            messageVO.setChatAvatar(e.getAvatar());
             messageVO.setDate(e.getDate());
             messageVO.setType(e.getType());
             messageVO.setChatStarname(e.getStarname());

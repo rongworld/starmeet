@@ -55,7 +55,7 @@ public class StarController {
     @GetMapping(value = "/api/stars")
     public String getStarts() {
         List<StarInfoVO> list = getStarsService.getStarts();
-        String userId = (String) Token.getInfo(httpServletRequest.getHeader("Authorization"), "userID");
+        String userId = String.valueOf( Token.getInfo(httpServletRequest.getHeader("Authorization"), "id"));
 
 
         User user = userDao.findUserById(Integer.valueOf(userId));

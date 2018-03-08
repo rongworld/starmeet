@@ -20,7 +20,7 @@ public class UserProvider implements Provider<User> {
     @Override
     public User get() {
         String token = httpServletRequestProvider.get().getHeader("Authorization");
-        String userId = (String) Token.getInfo(token, "userID");
+        String userId =String.valueOf(Token.getInfo(token, "id"));
         return userDao.findUserById(Integer.valueOf(userId));
     }
 }

@@ -7,9 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class Token {
-
     private static String apiKey = "star00star";
-
     public static boolean parseJWT(String jwt) {
         try {
             Jwts.parser().setSigningKey(apiKey.getBytes("UTF-8")).parseClaimsJws(jwt).getBody();
