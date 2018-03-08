@@ -36,6 +36,7 @@ public class Message {
     @Column(length = 7,name = "status")
     private Integer status;
 
+    public Message(){}
     public Message(Integer userId, Integer chatId, Date date, String type, String starname, String avatar, Integer status) {
         this.userId = userId;
         this.chatId = chatId;
