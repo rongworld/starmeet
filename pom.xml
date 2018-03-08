@@ -6,7 +6,7 @@
     <groupId>com.example</groupId>
     <artifactId>startmeet</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>startmeet</name>
     <description>Demo project for Spring Boot</description>
@@ -79,7 +79,6 @@
 
 
 
-<!--
 
 
                         <dependency>
@@ -89,7 +88,7 @@
                         </dependency>
 
 
--->
+
 
         <dependency>
             <groupId>com.alibaba</groupId>

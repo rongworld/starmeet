@@ -26,7 +26,7 @@ public class RankChartServiceImpl implements RankChartService{
         }
 
 
-        return list.stream().map(e->{
+        return list.stream().filter(e->e.getLastChangeTime() != null&&e.getChatId()!=null).map(e->{
             RankChartVO rankChartVO = new RankChartVO();
             User chatUser = userDao.findUserById(e.getChatId());
             rankChartVO.setAvatar1(e.getAvatar());

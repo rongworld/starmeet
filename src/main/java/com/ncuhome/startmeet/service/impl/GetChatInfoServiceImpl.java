@@ -30,7 +30,7 @@ public class GetChatInfoServiceImpl implements GetChatInfoService{
         chatInfoVO.setAvatar2(chatUser.getAvatar());
         chatInfoVO.setStarname1(user.getStarname());
         chatInfoVO.setStarname2(chatUser.getStarname());
-        chatInfoVO.setDays(5);
+        chatInfoVO.setDays((int) ((System.currentTimeMillis()-user.getLastChangeTime().getTime())/(1000*60*60*24)));
         return chatInfoVO;
     }
 }

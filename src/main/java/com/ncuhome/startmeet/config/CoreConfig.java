@@ -8,7 +8,7 @@ import java.io.IOException;
 /*
 *
 * 解决跨域问题*/
-@WebFilter
+//@WebFilter
 public class CoreConfig implements Filter{
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -21,7 +21,7 @@ public class CoreConfig implements Filter{
         HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
         httpServletResponse.setHeader("Access-Control-Allow-Origin","*");
         httpServletResponse.setHeader("Access-Control-Allow-Method","GET,POST,OPTIONS");
-        httpServletResponse.setHeader("Access-Control-Allow-Headers","Authorization,DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type");
+        httpServletResponse.setHeader("Access-Control-Allow-Headers","Authorization,Accept,Accept-Encoding,Accept-Language,User-Agent,Access-Control-Request-Headers,Access-Control-Request-Method,Cache-Control,Content-Type,Connection,Origin,User-Agent");
         httpServletResponse.setHeader("Access-Control-Allow-Credentials","true");
         filterChain.doFilter(servletRequest,servletResponse);
     }

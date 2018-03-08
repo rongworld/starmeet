@@ -11,6 +11,7 @@ import com.ncuhome.startmeet.enums.Type;
 import com.ncuhome.startmeet.exception.Exp;
 import com.ncuhome.startmeet.service.SaveMessageService;
 import com.ncuhome.startmeet.service.TouchStarService;
+import com.ncuhome.startmeet.util.CheckTime;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,27 +42,27 @@ public class TouchStarServiceServiceImpl implements TouchStarService {
             throw new Exp(Error.No_User.name());
         }
 
-//        if (status.equals(StarStatus.PICKED.name())) {
-//            throw new Exp(Error.Has_Picked.name());
-//        }
-//
-//        if (status.equals(StarStatus.PICKING.name())) {
-//            throw new Exp(Error.Has_Picking.name());
-//        }
-//
-//        if (!chatUser.getStarStatus().equals(StarStatus.ABANDON.name())) {
-//            throw new Exp(Error.Picked.name());
-//        }
+        if (status.equals(StarStatus.PICKED.name())) {
+            throw new Exp(Error.Has_Picked.name());
+        }
 
-//
-//        if (!CheckTime.isBelong(user.getLastChangeTime())) {
-//            throw new Exp(Error.Illegal_Time.name());
-//        }
-//
-//
-//        if (!CheckTime.isToday(user.getLastChangeTime())) {
-//            throw new Exp(Error.No_Chance.name());
-//        }
+        if (status.equals(StarStatus.PICKING.name())) {
+            throw new Exp(Error.Has_Picking.name());
+        }
+
+        if (!chatUser.getStarStatus().equals(StarStatus.ABANDON.name())) {
+            throw new Exp(Error.Picked.name());
+        }
+
+
+        if (!CheckTime.isBelong(user.getLastChangeTime())) {
+            throw new Exp(Error.Illegal_Time.name());
+        }
+
+
+        if (CheckTime.isToday(user.getLastChangeTime(),new Date())) {
+            throw new Exp(Error.No_Chance.name());
+        }
 
         user.setChatId(chatId);
         chatUser.setChatId(user.getId());
@@ -70,6 +71,8 @@ public class TouchStarServiceServiceImpl implements TouchStarService {
 
         Date date = new Date();
 
+        user.setLastChangeTime(date);
+        chatUser.setLastChangeTime(date);
         saveMessageService.save(new Message(user.getId(),chatUser.getId(),date, Type.PICKING.name(),chatUser.getStarname(),chatUser.getAvatar(),0));
         saveMessageService.save(new Message(chatUser.getId(),user.getId(),date, Type.PICKED.name(),user.getStarname(),user.getAvatar(),0));
 

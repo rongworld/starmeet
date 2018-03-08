@@ -1,6 +1,7 @@
 package com.ncuhome.startmeet.util;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class CheckTime {
@@ -34,12 +35,17 @@ public class CheckTime {
     }
 
 
-    public static Boolean isToday(Date date) {
-
-        Date now = new Date();
+    public static Boolean isToday(Date date,Date now) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy:MM:dd");
         String nowStr = simpleDateFormat.format(now);
         String dateStr = simpleDateFormat.format(date);
-        return nowStr.equals(dateStr);
+        return nowStr.equalsIgnoreCase(dateStr);
     }
+
+
+
+
+
+
+
 }

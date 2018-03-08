@@ -55,18 +55,18 @@ public class StarController {
     @GetMapping(value = "/api/stars")
     public String getStarts() {
         List<StarInfoVO> list = getStarsService.getStarts();
-        String userId = String.valueOf( Token.getInfo(httpServletRequest.getHeader("Authorization"), "id"));
-
-
-        User user = userDao.findUserById(Integer.valueOf(userId));
-        switch (StarStatus.valueOf(user.getStarStatus())) {
-            case ABANDON:
-                return new ResultVO<List>(0, "successful", list).toString();
-            case PICKED:
-                return new ResultVO<List>(Error.Has_Picked.getCode(), Error.Has_Picked.name(), list).toString();
-            case PICKING:
-                return new ResultVO<List>(Error.Has_Picking.getCode(), Error.Has_Picking.name(), list).toString();
-        }
+//        String userId = String.valueOf( Token.getInfo(httpServletRequest.getHeader("Authorization"), "id"));
+//
+//
+//        User user = userDao.findUserById(Integer.valueOf(userId));
+//        switch (StarStatus.valueOf(user.getStarStatus())) {
+//            case ABANDON:
+//                return new ResultVO<List>(0, "successful", list).toString();
+//            case PICKED:
+//                return new ResultVO<List>(Error.Has_Picked.getCode(), Error.Has_Picked.name(), list).toString();
+//            case PICKING:
+//                return new ResultVO<List>(Error.Has_Picking.getCode(), Error.Has_Picking.name(), list).toString();
+//        }
 
         return new ResultVO<List>(0, "successful", list).toString();
     }
