@@ -7,6 +7,7 @@ import com.ncuhome.startmeet.domain.Message;
 import com.ncuhome.startmeet.domain.User;
 import com.ncuhome.startmeet.service.GetMessageService;
 import com.ncuhome.startmeet.view.MessageVO;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,6 +24,7 @@ public class GetMessageServiceImpl implements GetMessageService{
 
 
     @Override
+    @Transactional
     public List<MessageVO> getMessages() {
         List<Message> messages = messageDao.findByUserId(user.getId());
 
