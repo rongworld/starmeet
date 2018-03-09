@@ -12,6 +12,7 @@ public enum  Error {
     Bad_Param(8),//非法参数
     Has_Abandon(9),//已经放弃
     No_Picked(10),//未被守护
+    NO_SELF(11),
     ;
 
 

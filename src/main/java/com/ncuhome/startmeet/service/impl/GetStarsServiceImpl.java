@@ -17,9 +17,12 @@ public class GetStarsServiceImpl implements GetStarsService {
     @Inject
     private UserDao userDao;
 
+    @Inject
+    private User user;
+
     @Override
     public List<StarInfoVO> getStarts() {
-        List<User> users = userDao.findStarts();
+        List<User> users = userDao.findStarts(user.getId());
         return users.stream().map(
                  e->{
                      StarInfoVO starInfoVO = new StarInfoVO();

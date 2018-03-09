@@ -79,7 +79,7 @@ public class StarController {
         }
 
         touchStarService.pick(chatId);
-        return new ResultVO(0, "successful").toString();
+        return new ResultVO(0, "守护成功").toString();
     }
 
     @PostMapping(value = "/api/abandon")

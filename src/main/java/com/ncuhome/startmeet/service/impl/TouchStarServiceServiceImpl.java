@@ -64,6 +64,10 @@ public class TouchStarServiceServiceImpl implements TouchStarService {
             throw new Exp(Error.No_Chance.name());
         }
 
+        if (user.getId().equals(chatId)){
+            throw new Exp(Error.NO_SELF.name());
+        }
+
         user.setChatId(chatId);
         chatUser.setChatId(user.getId());
         chatUser.setStarStatus(StarStatus.PICKED.name());

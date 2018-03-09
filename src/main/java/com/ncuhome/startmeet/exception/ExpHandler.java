@@ -46,6 +46,9 @@ public class ExpHandler {
             case No_Picked:
                 return new ResultVO(Error.No_Picked.getCode(), "未被守护").toString();
 
+            case NO_SELF:
+                return new ResultVO(Error.NO_SELF.getCode(), "不能守护自己").toString();
+
 
         }
         return new ResultVO(Error.Unknown_Error.getCode(), "未知错误").toString();
