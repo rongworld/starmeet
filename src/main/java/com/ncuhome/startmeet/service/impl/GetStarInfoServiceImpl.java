@@ -9,7 +9,8 @@ import com.ncuhome.startmeet.enums.StarStatus;
 import com.ncuhome.startmeet.exception.Exp;
 import com.ncuhome.startmeet.service.GetStarInfoService;
 import com.ncuhome.startmeet.view.StarInfoVO;
-import org.springframework.web.context.annotation.SessionScope;
+
+import java.text.SimpleDateFormat;
 
 @RequestScoped
 public class GetStarInfoServiceImpl implements GetStarInfoService {
@@ -22,7 +23,7 @@ public class GetStarInfoServiceImpl implements GetStarInfoService {
 
     @Override
     public StarInfoVO getStarInfo() throws Exp {
-        if (user.getStarStatus().equals(StarStatus.ABANDON.name())){
+        if (user.getStarStatus().equals(StarStatus.ABANDON.name())) {
             throw new Exp(Error.No_Picked.name());
         }
         User chatUser = userDao.findUserById(user.getChatId());
@@ -35,6 +36,11 @@ public class GetStarInfoServiceImpl implements GetStarInfoService {
         starInfoVO.setLabel(chatUser.getLabel());
         starInfoVO.setGender(chatUser.getGender());
         starInfoVO.setStarword(chatUser.getStarword());
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM月dd日 HH:mm");
+
+        starInfoVO.setDate(simpleDateFormat.format(user.getLastChangeTime()));
+        starInfoVO.setDays((int) ((System.currentTimeMillis() - user.getLastChangeTime().getTime()) / (1000 * 60 * 60 * 24)));
         return starInfoVO;
     }
 }

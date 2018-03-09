@@ -2,6 +2,8 @@ package com.ncuhome.startmeet.view;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class StarInfoVO {
 
@@ -17,11 +19,15 @@ public class StarInfoVO {
 
     private String starword;
 
-    private final String text = "{\"chatID\":%d,\"label\":%s,\"gender\":\"%s\",\"avatar\":\"%s\",\"starname\":\"%s\"}";
+    private String date;
+
+    private Integer days;
+
+    private final String text = "{\"chatID\":%d,\"label\":%s,\"gender\":\"%s\",\"avatar\":\"%s\",\"starname\":\"%s\",\"date\":\"%s\",\"days\":%d}";
 
     @Override
     public String toString(){
-        return String.format(text,startId,label,gender,avatar,starname);
+        return String.format(text,startId,label,gender,avatar,starname,date,days);
     }
 
 }
