@@ -1,5 +1,7 @@
 package com.ncuhome.startmeet.config;
 
+import org.springframework.context.annotation.Configuration;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletResponse;
@@ -8,7 +10,8 @@ import java.io.IOException;
 /*
 *
 * 解决跨域问题*/
-//@WebFilter
+@WebFilter
+@Configuration
 public class CoreConfig implements Filter{
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

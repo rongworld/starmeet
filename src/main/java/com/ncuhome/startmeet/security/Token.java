@@ -14,7 +14,7 @@ public class Token {
         try {
             Jwts.parser().setSigningKey(apiKey.getBytes("UTF-8")).parseClaimsJws(jwt).getBody();
         } catch (Exception e) {
-            e.printStackTrace();
+           // e.printStackTrace();
             return false;
         }
         return true;//解析成功则返回true
