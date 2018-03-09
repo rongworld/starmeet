@@ -73,7 +73,7 @@ public class TouchStarServiceServiceImpl implements TouchStarService {
 
         user.setLastChangeTime(date);
         chatUser.setLastChangeTime(date);
-        saveMessageService.save(new Message(user.getId(),chatUser.getId(),date, Type.PICKING.name(),chatUser.getStarname(),chatUser.getAvatar(),0));
+     //   saveMessageService.save(new Message(user.getId(),chatUser.getId(),date, Type.PICKING.name(),chatUser.getStarname(),chatUser.getAvatar(),0));
         saveMessageService.save(new Message(chatUser.getId(),user.getId(),date, Type.PICKED.name(),user.getStarname(),user.getAvatar(),0));
 
         userDao.saveAndFlush(user);
