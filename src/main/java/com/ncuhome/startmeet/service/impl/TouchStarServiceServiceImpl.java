@@ -36,7 +36,7 @@ public class TouchStarServiceServiceImpl implements TouchStarService {
     public void pick(Integer chatId) throws Exp {
 
         User chatUser = userDao.findUserById(chatId);
-        String status = chatUser.getStarStatus();
+        String status = user.getStarStatus();
 
         if (user == null) {
             throw new Exp(Error.No_User.name());
